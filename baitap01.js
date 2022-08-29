@@ -2,14 +2,32 @@
  * Input: nhập ngày, tháng, năm
  *
  * Process:
- * 1. Lấy giá trị ngày tháng năm vừa nhập
- * 2. Kiểm tra năm nhuận => năm chia cho 4 không dư thì là năm nhuận (tháng 2 có 29 ngày), ngược lại thì là năm không nhuận (tháng 2 có 28 ngày)
+ * 1. Lấy giá trị ngày tháng năm vừa nhập, tạo các biến day, month, year, nextDay, nextMonth, nextYear, previousDay, previousMonth, previousYear, dayOfMonth
+ * 2. Lấy giá trị ngày trong tháng; tháng 1, tháng 3, tháng 5, tháng 7, tháng 8, tháng 10, tháng 12 có 31 ngày (dayOfMonth = 31)
+ *                                  tháng 3, tháng 6, tháng 9, tháng 11 có 30 ngày (dayOfMonth = 30)
+ *                                  tháng 2 năm nhuận có 29 ngày (dayOfMonth = 29), tháng 2 năm không nhuận có 28 ngày (dayOfMonth = 28)
+ *
+ * 3. Tính ngày, tháng, năm của ngày tiếp theo:
+ * 3.1 Nếu là tháng 2 năm nhuận và có ngày là ngày 29 cuối tháng thì ngày tiếp theo sẽ là ngày 1/3/year
+ * 3.2 Nếu là tháng 2 năm không nhuận và có ngày là ngày 28 cuối tháng thì ngày tiếp theo sẽ là ngày 1/3/year
+ * 3.3 Còn lại thì ngày tiếp theo sẽ là ngày day+1/month/year
+ * 3.4 Nếu là tháng 12 và có ngày là ngày 31 cuối tháng thì ngày tiếp theo sẽ là ngày 1/1/year+1
+ * 3.5 Nếu không phải là tháng 12 và có ngày là ngày 31 cuối tháng thì ngày tiếp theo sẽ là ngày 1/month+1/year
+ * 3.6 Các trường hợp còn lại thì ngày tiếp theo sẽ là ngày day+1/month/year
+ * 4. Tính ngày, tháng, năm của ngày trước đó
+ * 4.1 Nếu ngày là ngày 1 và là tháng 1 thì ngày trước đó là ngày 31/12/year-1
+ * 4.2 Nếu tháng là tháng 3, ngày 1, năm nhuận thì ngày trước đó là ngày 29/2/year
+ * 4.3 Nếu tháng là tháng 3, ngày 1, năm không nhuận thì ngày trước đó là ngày 28/2/year
+ * 4.4 Nếu là ngày 1 của các tháng 2, tháng 4, tháng 6, tháng 9, tháng 11 thì ngày trước đó là ngày 31/month-1/year
+ * 4.5 Ngược lại, nếu là ngày 1 của các tháng 1, tháng 5, tháng 7, tháng 8, tháng 10, tháng 12 thì ngày trước đó là ngày 30/month-1/year
+ * 4.6 các trường hợp còn lại thì ngày trước đó là ngày day-1/month/year
+ * 5. In kết quả ra màn hình
  *
  * Output: tính ngày, tháng, năm của ngày tiếp theo và ngày trước đó
  */
 
-var day = 28;
-var month = 2;
+var day = 25;
+var month = 1;
 var year = 2020;
 var nextDay;
 var nextMonth;
